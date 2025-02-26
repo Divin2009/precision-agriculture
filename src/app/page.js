@@ -3,6 +3,8 @@ import { Rocket, Leaf, Satellite, BrainCircuit, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import HeroSection from '@/components/hero-section';
 import FeatureGrid from '@/components/feature-grid';
+import {motion} from "framer-motion"
+import {Card} from "@/components/ui/card"
 import Link from 'next/link';
 
 export default function Home() {
@@ -77,22 +79,92 @@ export default function Home() {
             Why Precision Farming?
           </h2>
           
-          <FeatureGrid features={[{
-            icon: <Leaf className="w-12 h-12 text-green-500" />,
-            title: "50-90% Reduction",
-            description: "In pesticide and fertilizer use through targeted application",
-            color: "green"
-          }, {
-            icon: <Satellite className="w-12 h-12 text-blue-500" />,
-            title: "Satellite Monitoring",
-            description: "Real-time field analysis with GPS & IoT sensors",
-            color: "blue"
-          }, {
-            icon: <BrainCircuit className="w-12 h-12 text-purple-500" />,
-            title: "AI Predictions",
-            description: "Machine learning models predict crop needs",
-            color: "purple"
-          }]} />
+          <div className="grid md:grid-cols-3 gap-8">
+          <motion.div
+                key="50-90% Reduction"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+              >
+                <Card className={`h-full p-8 bg-background/50 backdrop-blur-lg border-transparent hover:border-green-500/30 transition-all group`}>
+                  <div className="flex flex-col items-center text-center">
+                    <motion.div 
+                      whileHover={{ scale: 1.1 }}
+                      className={`mb-6 text-green-500 bg-green-500/10 p-4 rounded-2xl`}
+                    >
+                      <Leaf className="w-12 h-12 text-green-500" />
+                    </motion.div>
+                    
+                    <h3 className={`text-2xl font-bold mb-4 group-hover:text-green-500 transition-colors`}>
+                      {"50-90% Reduction"}
+                    </h3>
+                    
+                    <p className="text-muted-foreground leading-relaxed">
+                      {"In pesticide and fertilizer use through targeted application"}
+                    </p>
+                    
+                    {/* Hover effect line */}
+                    <div className={`w-0 h-1 bg-green-500 mt-6 group-hover:w-20 transition-all duration-300`} />
+                  </div>
+                </Card>
+          </motion.div>
+          <motion.div
+                key="Satellite Monitoring"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+              >
+                <Card className={`h-full p-8 bg-background/50 backdrop-blur-lg border-transparent hover:border-blue-500/30 transition-all group`}>
+                  <div className="flex flex-col items-center text-center">
+                    <motion.div 
+                      whileHover={{ scale: 1.1 }}
+                      className={`mb-6 text-blue-500 bg-blue-500/10 p-4 rounded-2xl`}
+                    >
+                      <Satellite className="w-12 h-12 text-blue-500" />
+                    </motion.div>
+                    
+                    <h3 className={`text-2xl font-bold mb-4 group-hover:text-blue-500 transition-colors`}>
+                      {"Satellite Monitoring"}
+                    </h3>
+                    
+                    <p className="text-muted-foreground leading-relaxed">
+                      {"Real-time field analysis with GPS & IoT sensors"}
+                    </p>
+                    
+                    {/* Hover effect line */}
+                    <div className={`w-0 h-1 bg-blue-500 mt-6 group-hover:w-20 transition-all duration-300`} />
+                  </div>
+                </Card>
+          </motion.div>
+          <motion.div
+                key="AI Predictions"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+              >
+                <Card className={`h-full p-8 bg-background/50 backdrop-blur-lg border-transparent hover:border-purple-500/30 transition-all group`}>
+                  <div className="flex flex-col items-center text-center">
+                    <motion.div 
+                      whileHover={{ scale: 1.1 }}
+                      className={`mb-6 text-green-500 bg-purple-500/10 p-4 rounded-2xl`}
+                    >
+                      <BrainCircuit className="w-12 h-12 text-purple-500" />
+                    </motion.div>
+                    
+                    <h3 className={`text-2xl font-bold mb-4 group-hover:text-green-500 transition-colors`}>
+                      {"AI Predictions"}
+                    </h3>
+                    
+                    <p className="text-muted-foreground leading-relaxed">
+                      {"Machine learning modesl predict crop needs"}
+                    </p>
+                    
+                    {/* Hover effect line */}
+                    <div className={`w-0 h-1 bg-purple-500 mt-6 group-hover:w-20 transition-all duration-300`} />
+                  </div>
+                </Card>
+          </motion.div>
+          </div>
 
           <div className="mt-16 text-center">
             <Link href="/technologies">
